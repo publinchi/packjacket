@@ -1066,15 +1066,33 @@ public class MainFrame extends JFrame {
             if (XMLUtils.isPack(p)) {
                 if (!p.pack_packImgId.equals("") && !new File(p.pack_packImgId).exists())
                     errors.append("    Pack: " + p.pack_name + " - Pack Screenshot\n");
-                for (XFile f : p.file)
-                    if (!new File(f.sourceFileOption ? f.packs_file_sourceFile : f.packs_file_sourceDir).exists())
+                for (XFile f : p.file) {
+                    if (new File(f.sourceFileOption 
+                            ? pjc.getParent().concat("/").concat(f.packs_file_sourceFile) 
+                            : pjc.getParent().concat("/").concat(f.packs_file_sourceDir))
+                            .exists()) {}
+                    else if (!new File(f.sourceFileOption ? f.packs_file_sourceFile : f.packs_file_sourceDir).exists())
                         errors.append("    Pack: " + p.pack_name + " - File: " + (f.sourceFileOption ? f.packs_file_sourceFile : f.packs_file_sourceDir) + "\n");
+                }   
             }
-        if (!guiPanel.langSelLogo.getText().trim().equals("") && !new File(guiPanel.langSelLogo.getText().trim()).exists())
+        if (!guiPanel.langSelLogo.getText().trim().equals("") 
+                && new File(pjc.getParent().concat("/")
+                        .concat(guiPanel.langSelLogo.getText().trim()))
+                        .exists()) {}
+        else if (!guiPanel.langSelLogo.getText().trim().equals("") && !new File(guiPanel.langSelLogo.getText().trim()).exists())
             errors.append("    GUI - Logo image File\n");
-        if (!guiPanel.sideImage.getText().trim().equals("") && !new File(guiPanel.sideImage.getText().trim()).exists())
+        if (!guiPanel.sideImage.getText().trim().equals("") 
+                && new File(pjc.getParent().concat("/")
+                        .concat(guiPanel.sideImage.getText().trim()))
+                        .exists()) {}
+        else if (!guiPanel.sideImage.getText().trim().equals("") && !new File(guiPanel.sideImage.getText().trim()).exists())
             errors.append("    GUI - Side image File\n");
-        if (guiPanel.advancedPanel.headerOption.isSelected() && !guiPanel.advancedPanel.headingImage.getText().trim().equals("") && !new File(guiPanel.advancedPanel.headingImage.getText().trim()).exists())
+        if (guiPanel.advancedPanel.headerOption.isSelected() 
+                && !guiPanel.advancedPanel.headingImage.getText().trim().equals("") 
+                && new File(pjc.getParent().concat("/")
+                        .concat(guiPanel.advancedPanel.headingImage.getText().trim()))
+                        .exists()) {}
+        else if (guiPanel.advancedPanel.headerOption.isSelected() && !guiPanel.advancedPanel.headingImage.getText().trim().equals("") && !new File(guiPanel.advancedPanel.headingImage.getText().trim()).exists())
             errors.append("    GUI - Advanced - Header Image\n");
         return errors;
     }

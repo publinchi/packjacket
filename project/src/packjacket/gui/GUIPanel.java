@@ -72,10 +72,8 @@ public class GUIPanel extends javax.swing.JPanel {
         jLabel4.setText("Side Image");
 
         sideImage.setBackground(new java.awt.Color(254, 254, 254));
-        sideImage.setEditable(false);
 
         langSelLogo.setBackground(new java.awt.Color(254, 254, 254));
-        langSelLogo.setEditable(false);
 
         sideBrowse.setText("Browse");
         sideBrowse.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +89,7 @@ public class GUIPanel extends javax.swing.JPanel {
             }
         });
 
-        advancedButton.setFont(new java.awt.Font("Tahoma", 1, 12));
+        advancedButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         advancedButton.setText("Advanced");
         advancedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

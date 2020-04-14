@@ -47,7 +47,7 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="browseBtn" alignment="0" pref="102" max="32767" attributes="1"/>
+                                  <Component id="browseBtn" alignment="0" max="32767" attributes="1"/>
                                   <Component id="headerBackgroundSelect" alignment="0" max="32767" attributes="1"/>
                                   <Component id="fontColourSelect" alignment="0" max="32767" attributes="1"/>
                               </Group>
@@ -259,7 +259,6 @@
     </Component>
     <Component class="javax.swing.JTextField" name="headingImage">
       <Properties>
-        <Property name="editable" type="boolean" value="false"/>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
