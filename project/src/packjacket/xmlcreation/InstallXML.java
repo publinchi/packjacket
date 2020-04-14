@@ -79,7 +79,7 @@ public class InstallXML {
     private Element getInstallation() {
         //Creates the installation element and adds atributes and appends the appropriate element if their respective features were used
         Element installation = xml.createElement("installation");
-        installation.setAttribute("version", "1.0");
+        installation.setAttribute("version", "5.0");
         installation.appendChild(getInfo());
         if (xmlObject.packagingOption)
             installation.appendChild(getPackaging());
@@ -386,12 +386,12 @@ public class InstallXML {
      * @return the variables element
      */
     private Element getVariables() {
+        Element variables = xml.createElement("variables");
+        variables.appendChild(getElement("variable", "INSTALL_PATH", ""));
         if (xmlObject.DesktopShortcutCheckboxEnabled) {
-            Element variables = xml.createElement("variables");
             variables.appendChild(getElement("variable", "DesktopShortcutCheckboxEnabled", xmlObject.DesktopShortcutCheckboxEnabled + ""));
-            return variables;
         }
-        return null;
+        return variables;
     }
 
     /**
