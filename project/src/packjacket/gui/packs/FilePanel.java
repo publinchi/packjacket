@@ -49,7 +49,6 @@ public class FilePanel extends javax.swing.JPanel {
         sourceDirOption = new javax.swing.JCheckBox();
         browseDir = new javax.swing.JButton();
 
-        sourceFile.setEditable(false);
         sourceFile.setToolTipText("The source file location");
 
         sourceFileOption.setSelected(true);
@@ -67,7 +66,6 @@ public class FilePanel extends javax.swing.JPanel {
             }
         });
 
-        sourceDir.setEditable(false);
         sourceDir.setToolTipText("The source directory location");
         sourceDir.setEnabled(false);
 
@@ -102,7 +100,7 @@ public class FilePanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(sourceDirOption)
                         .addGap(22, 22, 22)
-                        .addComponent(sourceDir, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                        .addComponent(sourceDir, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(browseDir)))
                 .addContainerGap())
