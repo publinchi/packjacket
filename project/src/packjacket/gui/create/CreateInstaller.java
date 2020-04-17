@@ -226,7 +226,7 @@ public class CreateInstaller extends javax.swing.JFrame {
         }
         //Create the xml file (comment out the try catch and you can force PackJacket to not create an XML file, rahter just put your own XML file in teh homedir
         try {
-            InstallXML.generateXML(RunnerClass.mf.getXML(), RunnerClass.homedir + "xml.xml");
+            InstallXML.generateXML(RunnerClass.mf.getXML(), RunnerClass.mf.pjc.getParent() + "/xml.xml");
         } catch (IOException ex) {
             RunnerClass.logger.log(Level.SEVERE, null, ex);
         }
