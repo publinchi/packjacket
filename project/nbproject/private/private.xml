@@ -4,9 +4,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="IZPACK">
-            <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/xml/XFile.java</file>
-            <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/gui/packs/GeneralPanel.java</file>
             <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/gui/MainFrame.java</file>
+            <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/gui/create/CreateInstaller.java</file>
+            <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/tasks/JarTask.java</file>
+            <file>file:/home/pestupinan/IdeaProjects/IZPACK/packjacket/project/src/packjacket/gui/create/ProgressFrame.java</file>
         </group>
     </open-files>
 </project-private>
