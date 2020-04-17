@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import packjacket.RunnerClass;
@@ -112,7 +113,11 @@ public class JarTask implements Task {
             return;
         }
         //Starts creating JAR using IzPack
-        p = Runtime.getRuntime().exec(new String[]{"java", "-Xmx" + memMeg + "m", "-jar", RunnerClass.homedir + "standalone-compiler.jar", "xml.xml", "-o", jarF.getAbsolutePath(), "-c", compression}, null, new File(RunnerClass.homedir));
+        if (Objects.nonNull(System.getenv("IzPack_HOME"))) {
+            p = Runtime.getRuntime().exec(new String[]{System.getenv("IzPack_HOME") + "/bin/compile", RunnerClass.mf.pjc.getParent()+"/xml.xml", "-b", RunnerClass.mf.pjc.getParent(), "-o", jarF.getAbsolutePath()}, null, new File(RunnerClass.mf.pjc.getParent()));
+        } else {
+            RunnerClass.logger.log(Level.SEVERE, null, "IzPack_HOME not found.");            
+        }
         //Gets output streams
         final BufferedReader inps = new BufferedReader(new InputStreamReader(p.getInputStream()));
         final BufferedReader errs = new BufferedReader(new InputStreamReader(p.getErrorStream()));
@@ -167,7 +172,7 @@ public class JarTask implements Task {
                     while ((c = errs.readLine()) != null) {
                         if (c.contains("OutOfMemoryError"))
                             outOfMemoryError = true;
-                        if (!(c.contains("Pack200Logger warning") || c.contains("WARNING: skipping")))
+                        if ((c.contains("Pack200Logger warning") || c.contains("WARNING: skipping")))
                                crashed = true;
                         RunnerClass.logger.severe("Error: " + c);
                     }
@@ -180,6 +185,7 @@ public class JarTask implements Task {
         //Catch is empty because when process is killed, tahts good
         try {
             p.waitFor();
+            new File(RunnerClass.mf.pjc.getParent()+"/xml.xml").delete();
         } catch (InterruptedException ex) {
         }
     }
