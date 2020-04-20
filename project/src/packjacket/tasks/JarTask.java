@@ -113,10 +113,11 @@ public class JarTask implements Task {
             return;
         }
         //Starts creating JAR using IzPack
-        if (Objects.nonNull(System.getenv("IzPack_HOME"))) {
-            p = Runtime.getRuntime().exec(new String[]{System.getenv("IzPack_HOME") + "/bin/compile", RunnerClass.mf.pjc.getParent()+"/xml.xml", "-b", RunnerClass.mf.pjc.getParent(), "-o", jarF.getAbsolutePath()}, null, new File(RunnerClass.mf.pjc.getParent()));
+        if (Objects.nonNull(System.getenv("IZPACK_HOME"))) {
+            p = Runtime.getRuntime().exec(new String[]{System.getenv("IZPACK_HOME") + "/bin/compile", RunnerClass.mf.pjc.getParent()+"/xml.xml", "-b", RunnerClass.mf.pjc.getParent(), "-o", jarF.getAbsolutePath()}, null, new File(RunnerClass.mf.pjc.getParent()));
         } else {
-            RunnerClass.logger.log(Level.SEVERE, null, "IzPack_HOME not found.");            
+            fr.taskMsg.setText("ERROR: IZPACK_HOME not found.");
+            RunnerClass.logger.log(Level.SEVERE, null, "IZPACK_HOME not found.");   
         }
         //Gets output streams
         final BufferedReader inps = new BufferedReader(new InputStreamReader(p.getInputStream()));
